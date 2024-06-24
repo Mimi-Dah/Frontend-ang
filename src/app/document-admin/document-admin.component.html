@@ -1,0 +1,156 @@
+<div class="col">
+  <div class="row m-3">
+    <div class="col-md-8 p-0">
+      <h1>Liste des Marchees</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <div class="d-flex">
+        <div *ngIf="showButtons" class="p-2 flex-fill">
+          <button type="button" class="btn btn-warning">
+            <i class="fas fa-cloud-upload-alt"></i>&nbsp;
+            Remonter
+          </button>
+        </div>
+        <div *ngIf="showButtons" class="p-2 flex-fill">
+          <button type="button" class="btn btn-success">
+            <i class="fas fa-cloud-download-alt"></i>&nbsp;
+            Exporter
+          </button>
+        </div>
+        <div class="p-2 flex-fill " *ngIf="isAutorite">
+          <button type="button" class="btn btn-primary"(click)="openAddDialog();" >
+            <i class="fas fa-plus"></i>&nbsp;
+            Nouveau
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="card row m-3" >
+      <!-- start -->
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ppm_type</th>
+            <th>inscription_ppm</th>
+            <th>ac</th>
+            <th>ref_activite</th>
+            <th>type_activite</th>
+            <th>mode</th>
+            <th>date_prev_lancement_activite</th>
+            <th>date_prev_de_reception</th>
+            <th>budget_prev</th>
+            <th>devise</th>
+            <th>source_de_financement</th>
+            <th>lib_source_de_financement</th>
+            <th>niveau_suivi</th>
+            <th>etape</th>
+            <th>approbation</th>
+            <th>date_attribution</th>
+            <th>montant_total_du_marche</th>
+            <th>date_signature_ac</th>
+            <th>num_marche</th>   
+            <th>date_numerotation</th>   
+            <th>date_notification</th>     
+            <th>delai_execution_en_jour</th>     
+            <th>date_de_reception</th>  
+            <th>ppm</th>
+          
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Ajoutez des lignes de données pour chaque élément -->
+
+          <tr *ngFor="let document of commites">
+            <td>
+              <input type="checkbox" [checked]="document.isSelected" (change)="toggleButtons($event)" class="select-checkbox">
+            </td>
+            <ng-container matColumnDef="nom">
+              <td mat-cell *matCellDef="let typeppm"> {{ typeppm }} </td>
+            </ng-container>
+
+
+            
+            <td>{{ document.ppm_type }}</td> 
+            <td>{{ document.inscription_ppm }}</td>
+            <td>{{ document.ac }}</td>
+            <td>{{ document.ref_activite }}</td>
+            <td>{{ document.type_activite }}</td>
+            <td>{{ document.mode }}</td>
+            <td>{{ document.date_prev_lancement_activite }}</td>
+            <td>{{ document.date_prev_de_reception }}</td>
+            <td>{{ document.budget_prev }}</td>
+            <td>{{ document.devise }}</td>
+            <td>{{ document.source_de_financement }}</td>
+            <td>{{ document.lib_source_de_financement }}</td>
+            <td>{{ document.niveau_suivi }}</td>
+            <td>{{ document.etape }}</td>
+            <td>{{ document.approbation }}</td>
+            <td>{{ document.date_attribution }}</td>
+            <td>{{ document.montant_total_du_marche }}</td>
+            <td>{{ document.date_signature_ac }}</td>
+            <td>{{ document.num_marche }}</td>
+            <td>{{ document.date_numerotation }}</td>
+            <td>{{ document.date_notification }}</td>
+            <td>{{ document.delai_execution_en_jour }}</td>
+            <td>{{ document.date_de_reception }}</td>
+            <td>{{ document.ppm }}</td>
+            <td>
+              <button type="button" class="btn btn-link">
+                <i class="fas fa-pencil-alt"></i> Modifier
+              </button>
+              <button type="button" class="btn btn-link text-danger"  data-toggle="modal" [attr.data-target]="'#modalDeleteArticle'">
+                <i class="fas fa-trash-alt"></i> Supprimer
+              </button>
+              <button type="button" class="btn btn-link">
+                <i class="far fa-list-alt"></i> Détails
+              </button>
+            </td>
+          </tr>
+          <!-- Ajoutez d'autres lignes de données au besoin -->
+        </tbody>
+      </table>
+      
+      <!-- Modal de confirmation de suppression -->
+      <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Êtes-vous sûr de vouloir supprimer cet marché ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <i class="fas fa-ban"></i> Annuler
+              </button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                <i class="fas fa-trash-alt"></i> Supprimer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- end  -->
+    <!-- <app-detail-article></app-detail-article>
+    <app-detail-article></app-detail-article>
+    <app-detail-article></app-detail-article>
+    <app-detail-article></app-detail-article>
+    <app-detail-article></app-detail-article> -->
+
+  </div>
+  <div class="row mb-3" >
+    <div class=" col-md-12 text-center">
+      <!-- <app-pagination></app-pagination> -->
+    </div>
+  </div>
+
+</div>

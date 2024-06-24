@@ -1,0 +1,201 @@
+<div class="container my-container">
+    <div class="card-body">
+        <form class="login100-form validate-form" (ngSubmit)="onSubmit()" style="overflow: scroll; height: 700px;" >
+            <div class="mb-3">
+            <ng-container matColumnDef="annee_ppm">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let document"> {{ document.annee_ppm }} </td>
+            </ng-container>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="ppm" [ngModelOptions]="{standalone: true}" placeholder="PPM">
+            </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="ppmType" [ngModelOptions]="{standalone: true}" placeholder="Type PPM">
+            </div> -->
+            <div class="form-group" class="mb-3">
+                <label for="ppm_type">ppm_annee:</label>
+                <select id="ppm_type" class="form-control" [(ngModel)]="ppmType">
+                  <option *ngFor="let option of ppmOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            <div class="mb-3">
+                <input type="checkbox" class="form-check-input" [(ngModel)]="inscriptionPpm" [ngModelOptions]="{standalone: true}"> Inscription PPM
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="ac" [ngModelOptions]="{standalone: true}" placeholder="AC">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="refActivite" [ngModelOptions]="{standalone: true}" placeholder="Référence Activité">
+            </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="typeActivite" [ngModelOptions]="{standalone: true}" placeholder="Type Activité">
+            </div> -->
+            <div class="form-group">
+                <label for="typeActivite">Type d'activité:</label>
+                <select id="typeActivite" class="form-control" [(ngModel)]="typeActivite">
+                  <option *ngFor="let option of typeActiviteOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="mode" [ngModelOptions]="{standalone: true}" placeholder="Mode">
+            </div> -->
+                
+           <div class="form-group">
+            <label for="mode">Mode:</label>
+           <select id="mode" class="form-control" [(ngModel)]="mode">
+           <option *ngFor="let option of modeOptions" [value]="option.value">
+           {{ option.label }}
+           </option>
+           </select>
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="datePrevLancementActivite" [ngModelOptions]="{standalone: true}" placeholder="Date Prévue Lancement Activité">
+            </div>
+
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="datePrevDeReception" [ngModelOptions]="{standalone: true}" placeholder="Date Prévue de Réception">
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" [(ngModel)]="budgetPrev" [ngModelOptions]="{standalone: true}" placeholder="Budget Prévu">
+            </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="devise" [ngModelOptions]="{standalone: true}" placeholder="Devise">
+            </div> -->
+            <div class="form-group">
+                <label for="devise">Devise:</label>
+                <select id="devise" class="form-control" [(ngModel)]="devise">
+                  <option *ngFor="let option of deviseOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="sourceDeFinancement" [ngModelOptions]="{standalone: true}" placeholder="Source de Financement">
+            </div> -->
+
+            <div class="form-group">
+                <label for="sourceDeFinancement">Source de financement:</label>
+                <select id="sourceDeFinancement" class="form-control" [(ngModel)]="sourceDeFinancement">
+                  <option *ngFor="let option of sourceDeFinancementOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="libSourceDeFinancement" [ngModelOptions]="{standalone: true}" placeholder="Libellé Source de Financement">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="datePublicationActivite" [ngModelOptions]="{standalone: true}" placeholder="Date Publication Activité">
+            </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="niveauSuivi" [ngModelOptions]="{standalone: true}" placeholder="Niveau de Suivi">
+            </div> -->
+
+            <div class="form-group">
+                <label for="niveauSuivi">Niveau de suivi:</label>
+                <select id="niveauSuivi" class="form-control" [(ngModel)]="niveauSuivi">
+                  <option *ngFor="let option of niveauSuiviOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="etape" [ngModelOptions]="{standalone: true}" placeholder="Étape">
+            </div> -->
+
+            <div class="form-group">
+                <label for="etape">Etape:</label>
+                <select id="etape" class="form-control" [(ngModel)]="etape">
+                  <option *ngFor="let option of etapeOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="approbation" [ngModelOptions]="{standalone: true}" placeholder="Approbation">
+            </div> -->
+
+            <div class="form-group">
+                <label for="approbation">Approbation:</label>
+                <select id="approbation" class="form-control" [(ngModel)]="approbation">
+                  <option *ngFor="let option of approbationOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="dateAttribution" [ngModelOptions]="{standalone: true}" placeholder="Date Attribution">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="attributaire" [ngModelOptions]="{standalone: true}" placeholder="Attributaire">
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" [(ngModel)]="montantTotalDuMarche" [ngModelOptions]="{standalone: true}" placeholder="Montant Total du Marché">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="dateSignatureAc" [ngModelOptions]="{standalone: true}" placeholder="Date Signature AC">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="numMarche" [ngModelOptions]="{standalone: true}" placeholder="Numéro Marché">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="dateNumerotation" [ngModelOptions]="{standalone: true}" placeholder="Date Numérotation">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="dateNotification" [ngModelOptions]="{standalone: true}" placeholder="Date Notification">
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" [(ngModel)]="delaiExecutionEnJour" [ngModelOptions]="{standalone: true}" placeholder="Délai Exécution en Jour">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" [(ngModel)]="dateDeReception" [ngModelOptions]="{standalone: true}" placeholder="Date de Réception">
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" [(ngModel)]="retardConstateEnJour" [ngModelOptions]="{standalone: true}" placeholder="Retard Constaté en Jour">
+            </div>
+            <!-- <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="etatDuMarche" [ngModelOptions]="{standalone: true}" placeholder="État du Marché">
+            </div> -->
+
+            <div class="form-group">
+                <label for="etatDuMarche">Etat du marché:</label>
+                <select id="etatDuMarche" class="form-control" [(ngModel)]="etatDuMarche">
+                  <option *ngFor="let option of etatDuMarcheOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            <div class="mb-3">
+                <textarea class="form-control" [(ngModel)]="observation" [ngModelOptions]="{standalone: true}" placeholder="Observation"></textarea>
+            </div>
+            <div class="mb-3">
+                <input type="file" (change)="onFileSelected($event)" accept=".pdf, .doc, .docx">
+            </div>
+            <!-- <div class="mb-3 d-flex justify-content-between">
+                <div class="container-login100-form-btn" mat-dialog-actions class="action">
+                    <button type="submit" class="login100-form-btn" [disabled]="loginInProgress">
+                        <i class="fas fa-check"></i> &nbsp;
+                        <span *ngIf="!loginInProgress">Enregistrer</span>
+                        <mat-progress-spinner *ngIf="loginInProgress" class="mat-spinner-color" mode="indeterminate" style="width: 20px;height: 20px; margin:auto;"></mat-progress-spinner>
+                    </button>
+                    <button style="color: rgba(0, 0, 0, 0.976);padding-left: 20px ;border-radius: solid 20px; width: 100px; height: 40px;" mat-raised-button [mat-dialog-close]="false">Annuler</button>
+                </div>
+            </div> -->
+            <div mat-dialog-actions class="action">
+                <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                <!-- <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Save</button> -->
+                <form (ngSubmit)="onSubmit()">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </form>
+        <div *ngIf="showErrorMessage"></div> 
+    </div>
+</div>

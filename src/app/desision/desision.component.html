@@ -1,0 +1,46 @@
+<div class="flex-container">
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher" class="search-input" [(ngModel)]="searchTerm" (input)="applyFilter()"/>
+    </div>
+  <div class="page-content" style="padding-left: 0px; padding-bottom: 10px;" *ngIf="isAdmin">
+    <button style="color: white; background-color: #5538D9; border-radius: 10px; width: 200px; height: 50px;" mat-raised-button (click)="openAddDocumentDialog()">
+      <img src="assets/icons/add.png" class="mat-iconleft" width="20px" height="20px" alt="">
+    </button>
+  </div>
+  </div>
+  
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>date_soumission</th>
+          <th>montant</th>
+          <th>marche</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let decisions of dataSource.filteredData">
+          
+              <div class="actions" *ngIf="decisions.isSelected">
+                <button mat-icon-button class="example-icon-up" (click)="openConfirmationDialog(decisions.id)">
+                <span><img src="assets/icons/delete.png" width="20px" height="20px" alt="Supprimer"></span>
+              </button>
+
+              <button mat-icon-button class="example-icon-up" (click)="openUpdateDialog(decisions.id)">
+              <span><img src="assets/icons/edit.png" class="mat-iconleft" width="22px" height="24px" alt=""></span>
+              </button>
+            </div>
+          
+          <td>
+              <input type="checkbox"  [checked]="decisions.isSelected" (change)="(decisions)" (change)="toggleSelection(decisions)"class="select-checkbox">
+          </td>
+          <td>{{ decisions.date_soumission }}</td>
+          <td>{{ decisions.montant }}</td>
+          <td>{{ decisions.marche }}</td>
+          
+      </tr>
+  </tbody>
+</table>
+<mat-paginator [pageSizeOptions]="[3, 5, 10]" (page)="onPageChange($event)" showFirstLastButtons></mat-paginator>
+
+
